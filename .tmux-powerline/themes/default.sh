@@ -25,7 +25,7 @@ if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
 	TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
 		"tmux_session_info 148 234" \
 		"lan_ip 24 255" \
-		"hostname 33 0" \
+		#"hostname 33 0" \
 		#"ifstat 30 255" \
 		#"ifstat_sys 30 255" \
 		#"lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
@@ -49,7 +49,7 @@ if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 		#"tmux_mem_cpu_load 234 136" \
 		#"battery 137 127" \
 		"show_mem 215 52" \
-		"weather 37 255" \
+		#"weather 37 255" \
 		#"disk_info 27 188" \
 		#"rainbarf 137 127" \
 		#"xkb_layout 125 117" \

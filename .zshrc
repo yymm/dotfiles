@@ -54,6 +54,8 @@ else
 	# Simple
 	export PROMPT="%F{green}%~%f %# "
 	export PROMPT2="%F{green}%~%f > "
+	# for Mac
+	alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 fi
 # Alias
 alias ls='ls -G'
