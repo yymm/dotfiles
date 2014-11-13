@@ -52,8 +52,8 @@ elif [ -e /etc/redhat-release ]; then
 	#export PROMPT2="%F{green}%~%f > "
 	# Custom Regular
 	export PROMPT="
-	==> %F{magenta}%~%f
-	%F{cyan}%B%n%b%f[%#] "
+==> %F{magenta}%~%f
+%F{cyan}%B%n%b%f%1(v|%F{green}%1v%f|)[%#] "
 	export PROMPT2="%F%B%n%b%f[>] "
 	export RPROMPT="[%F{blue}%*%f]"
 else
