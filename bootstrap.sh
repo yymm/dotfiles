@@ -33,8 +33,8 @@ function askYesOrNo {
   done
 }
 
-askYesOrNo ">>> GUI?"
-if [ $? -eq 0 ]; then
-	ln -s -i $HOME/dotfiles/.vimperatorrc $HOME/.vimperatorrc
-	ln -s -i $HOME/dotfiles/.vimperator $HOME/.vimperator
-fi
+#askYesOrNo ">>> GUI?"
+#if [ $? -eq 0 ]; then
+#	ln -s -i $HOME/dotfiles/.vimperatorrc $HOME/.vimperatorrc
+#	ln -s -i $HOME/dotfiles/.vimperator $HOME/.vimperator
+#fi
