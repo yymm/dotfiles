@@ -6,8 +6,9 @@ do
 done
 
 # Neobundle
-[ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim && vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
+[ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 [ ! -d ~/.vim/bundle/vimproc.vim ] && git clone git@github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
 
 case "${OSTYPE}" in
 # Mac(Unix)
