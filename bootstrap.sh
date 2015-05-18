@@ -9,7 +9,6 @@ done
 [ ! -d ~/.vim/bundle ] && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 [ ! -d ~/.vim/bundle/vimproc.vim ] && git clone git@github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
 
-
 case "${OSTYPE}" in
 # Mac(Unix)
 darwin*)0
@@ -20,6 +19,8 @@ linux*)
     cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
     ;;  
 esac
+
+vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
 
 function askYesOrNo {
   MSG=$1
