@@ -38,5 +38,8 @@ NeoBundle 'LeafCage/yankround.vim.git'
 NeoBundle 'mattn/webapi-vim.git'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'wting/rust.vim'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'mtscout6/vim-cjsx'
 
 filetype plugin indent on

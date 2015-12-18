@@ -200,7 +200,8 @@ set rtp+=$GOROOT/misc/vim
 " vimにcoffeeファイルタイプを認識させる
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " " インデントを設定
-autocmd FileType coffee     setlocal sw=4 sts=4 ts=4 et
+autocmd FileType coffee setlocal sw=4 sts=4 ts=4 et
+autocmd filetype javascript setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
 
 "
 " Plugins
