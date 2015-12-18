@@ -16,6 +16,7 @@ set ruler
 set showcmd
 "bracket match high lighting
 set noshowmatch
+set matchtime=1
 "always status line
 set laststatus=2
 "ok backspace
@@ -150,6 +151,13 @@ set encoding=utf-8
 "set fileencodings=iso-2022-jp,euc-jp,sjis,utf8
 set fileencodings=utf-8,euc-jp,ucs-bom,iso-2022-jp,sjis,cp932,latin
 
+" In/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Y => y$
+nnoremap Y y$
+
 "
 " for Python
 "
@@ -188,6 +196,12 @@ augroup END
 function! s:fortran_setting()
 	setl colorcolumn=6
 endfunction
+
+
+au FileType html setl sw=4 sts=4 et
+au FileType htmldjango setl sw=4 sts=4 et
+au FileType cpp setl tabstop=2 shiftwidth=2 sts=0 et
+au FileType javascript setl tabstop=2 shiftwidth=2 sts=0 et
 
 "
 " golang
