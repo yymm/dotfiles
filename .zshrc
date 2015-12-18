@@ -1,4 +1,4 @@
-export LANG="ja_JP.UTF-8"
+export LANG="en_US.UTF-8"
 export TERM=xterm-256color
 # The following lines were added by compinstall
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate

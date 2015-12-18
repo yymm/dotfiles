@@ -154,7 +154,7 @@ let g:vimfiler_safe_mode_by_default = 0
 "buffer directory
 nnoremap <silent> fe :<C-u>VimFilerBufferDir -quit<CR>
 "IDE like
-nnoremap <silent> fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> fi :<C-u>VimFilerBufferDir -split -simple -winwidth=80 -no-quit<CR>
  
 "key mapping
 augroup vimrc
@@ -171,7 +171,7 @@ endfunction
 " -------------------------------------------------------
 
 "autocmd VimEnter * VimFiler -buffer-name=explorer -split -winwidth=20 -toggle -no-quit
-nnoremap <C-e> :VimFiler -buffer-name=explorer -split -winwidth=50 -toggle -no-quit<Cr>
+nnoremap <C-e> :VimFiler -buffer-name=explorer -split -winwidth=80 -toggle -no-quit<Cr>
 autocmd! FileType vimfiler call s:my_vimfiler_settings()
 function! s:my_vimfiler_settings()
   nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
@@ -260,7 +260,8 @@ nnoremap /  /\v
 " vim-airline
 " -----------
 
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#virtualenv#enabled = 0
 
@@ -347,3 +348,10 @@ augroup PrevimSettings
     autocmd!
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
+
+" ---------
+" Syntastic
+" ---------
+let g:syntastic_c_include_dirs = [ '../inc', '../src', 'inc', 'src' ]                                                                                                                                                                                                           
+let g:syntastic_cpp_include_dirs = [ '../inc', '../src', 'inc', 'src' ]
+let g:syntastic_perl_lib_path = [ '/usr/local/lib/perl5/auto' ]
