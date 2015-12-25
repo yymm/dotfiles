@@ -2,14 +2,17 @@
 "neobundle
 "---------
 
-filetype plugin indent off
+if 0 | endif
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim
-	call neobundle#begin(expand('~/.vim/bundle/'))
-	NeoBundleFetch 'Shougo/neobundle.vim'
-	call neobundle#end()
+  if &compatible
+    set nocompatible
+  endif
+
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundle 'Shougo/neocomplete.git'
 NeoBundle 'Shougo/neosnippet.git'
@@ -41,5 +44,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'wting/rust.vim'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'mtscout6/vim-cjsx'
+
+call neobundle#end()
 
 filetype plugin indent on
