@@ -6,8 +6,8 @@ do
 done
 
 # Neobundle
-[ ! -d ~/.vim/bundle ] && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-[ ! -d ~/.vim/bundle/vimproc.vim ] && git clone git@github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+[ ! -d ~/.vim/bundle ] && git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
+[ ! -d ~/.vim/bundle/vimproc.vim ] && git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
 
 case "${OSTYPE}" in
 # Mac(Unix)
