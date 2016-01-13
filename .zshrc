@@ -79,8 +79,3 @@ setopt auto_cd
 setopt auto_pushd
 setopt correct
 setopt list_packed
-
-# ====================
-# Environment Settings
-# ====================
-source $HOME/.zshrc.env
