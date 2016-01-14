@@ -57,4 +57,4 @@ setopt auto_pushd
 setopt correct
 setopt list_packed
 # intel compiler
-source /opt/intel/bin/iccvars.sh intel64
+source /opt/intel/bin/iccvars.sh intel64 > /dev/null 2>&1
