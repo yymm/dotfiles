@@ -39,35 +39,12 @@ precmd () {
 autoload colors
 colors
 #Prompt
-if [ -e /etc/lsb-release ]; then 
-	# Kawaii
-	PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*╹◡╹)!(*;_;%)).｡o(Ubuntu) %F{gray}[%f%F{magenta}%~%f%1(v|%F{cyan}%1v%f|)] %#%{${reset_color}%} "
-	PROMPT2="%{$fg[blue]%}%_>%{$reset_color%a}%b "
-	setopt correct
-	SPROMPT="%{$fg[red]%}%{$suggest%}(*╹-╹)? %b %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-	export RPROMPT="[%F{green}%*%f]"
-elif [ -e /etc/redhat-release ]; then
-	# Regular
-	#export PROMPT=">%F{magenta}%n%f< [%F{cyan}%~%f]%# "
-	#export PROMPT2="%F{green}%~%f > "
-	# Custom Regular
-	export PROMPT="
-==> %F{magenta}%~%f
-%F{cyan}%B%n%b%f%1(v|%F{green}%1v%f|)[%#] "
-	export PROMPT2="%F%B%n%b%f[>] "
-	export RPROMPT="[%F{blue}%*%f]"
-else
-	PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*╹◡╹)!(*;_;%)).｡o(Mac) %F{gray}[%f%F{magenta}%~%f%1(v|%F{cyan}%1v%f|)] %#%{${reset_color}%} "
-	PROMPT2="%{$fg[blue]%}%_>%{$reset_color%a}%b "
-	setopt correct
-	SPROMPT="%{$fg[red]%}%{$suggest%}(*╹-╹)? %b %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-	export RPROMPT="[%F{green}%*%f]"
-	# Simple
-	#export PROMPT="%F{green}%~%f %# "
-	#export PROMPT2="%F{green}%~%f > "
-	# for Mac
-	alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-fi
+# Kawaii
+PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*╹◡╹)!(*;_;%)).｡o(CentOS-VM) %F{gray}[%f%F{magenta}%~%f%1(v|%F{cyan}%1v%f|)] %#%{${reset_color}%} "
+PROMPT2="%{$fg[blue]%}%_>%{$reset_color%a}%b "
+setopt correct
+SPROMPT="%{$fg[red]%}%{$suggest%}(*╹-╹)? %b %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+export RPROMPT="[%F{green}%*%f]"
 # Alias
 alias ls='ls -G'
 # PATH
@@ -79,3 +56,5 @@ setopt auto_cd
 setopt auto_pushd
 setopt correct
 setopt list_packed
+# intel compiler
+source /opt/intel/bin/iccvars.sh intel64
