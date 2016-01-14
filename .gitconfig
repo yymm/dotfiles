@@ -10,7 +10,7 @@ interactive = auto
 grep = auto
 [alias]
 cm = commit -m
-st = status --short --branch
+st = status --short
 tl = log --graph --decorate --oneline
 glog = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
 alog = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
