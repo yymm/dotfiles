@@ -42,6 +42,7 @@ NeoBundle 'LeafCage/yankround.vim.git'
 NeoBundle 'mattn/webapi-vim.git'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'rust-lang/rust.vim'
 
 call neobundle#end()
 
