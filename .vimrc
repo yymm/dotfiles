@@ -108,7 +108,7 @@ endfunction
 "Change current directory.
 nnoremap <silent> <Space> cd :<C-u>CD<CR>
 "row number hide setting
-nnoremap <silent> non :<C-u>set nonumber<CR>
+nnoremap <silent> setnon :<C-u>set nonumber<CR>
 nnoremap <silent> setn :<C-u>set number<CR>
 "vimdiff command : Diff
 "vimdiff
@@ -320,3 +320,6 @@ endfun
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
+" indent highlight
+hi SpecialKey ctermfg=darkmagenta
+set list listchars=tab:¦_
