@@ -27,8 +27,8 @@ noremap <silent> tn :<C-u>tabnew<CR>
 map ,b :bmarks!
 
 " gt gT -> J/K
-noremap H gT
-noremap L gt
+noremap K gT
+noremap J gt
 
 "hint -> alphabet
 set hintchars=asdfghjklzxcvbnm

@@ -93,49 +93,6 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " no completion moving cursor on inser mode
 let g:neocomplete_enable_insert_char_pre = 1
 
-"----------
-"neosnippet
-"----------
-
-" Plugin key-mappings.
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"\ "\<Plug>(neosnippet_expand_or_jump)"
-"\: pumvisible() ? "\<C-n>" : "\<TAB>"
-"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"\ "\<Plug>(neosnippet_expand_or_jump)"
-"\: "\<TAB>"
-
-" For snippet_complete marker.
-"if has('conceal')
-  "set conceallevel=2 concealcursor=i
-"endif
-
-"
-" REF : http://kazuph.hateblo.jp/entry/2013/01/19/193745
-"
-
-" <TAB>: completion.                                         
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"   
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>" 
-
-" Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 " ---------
 " unite.vim
 " ---------
@@ -211,19 +168,6 @@ nnoremap <silent> vp :<C-u>VimShellPop<CR>
 let g:vimshell_prompt_expr = 'getcwd()." > "'
 let g:vimshell_prompt_pattern = '^\f\+ > '
 
-"-----------------
-"smooth-scroll.vim
-"-----------------
-
-"<C-d>：half down
-"<C-u>：half up
-"<C-f>：down
-"<C-b>：up
-"refer help
-"map <C-u> <C-y>2<C-y>2<C-y>2<C-y>2<C-y>2<C-y><C-y>
-"map <C-d> <C-e>2<C-e>2<C-e>2<C-e>2<C-e>2<C-e><C-e>
-
-
 "------------------
 "NERD_commenter.vim
 "------------------
@@ -247,7 +191,6 @@ nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
-
 " ------------------
 " regular expression
 " ------------------
@@ -264,63 +207,16 @@ let g:airline_powerline_fonts = 0
 let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#virtualenv#enabled = 0
 
-" --------------------------------------------------------------------------------
-" restpreview with w3m
-"
-" requirements
-" * w3m : text web browser
-" * restview : simple reStructuredText viewer (pypi package)
-" ref
-" http://prepro.wordpress.com/2012/06/10/vimw3mでrestructuredtextの環境を構築する/
-" TODO
-" webapi.vimとvimprocを使って非同期プロセスでバックエンド起動しておければ最高
-" --------------------------------------------------------------------------------
-
-"function! RestWatch()
-    "" TODO バックエンドで起動する
-    "" !restview -l 9999 . &
-    "" TODO 事前にプロセスとwindow情報を確認する。今は固定
-    "" let restview_pid = !pgrep -n -f restview
-    "" echo !lsof -Fc -a -i -p restview_pid
-    ":W3mSplit http://localhost:9999
-    ":wincmd L
-"endfunction
- 
-"function! RestW3mReload()
-    ":wincmd w
-    ":W3mReload
-    ":wincmd w
-"endfunction
- 
-"command! -nargs=0 RestWatch call RestWatch()
-"command! -nargs=0 RestReload call RestW3mReload()
- 
-"autocmd BufWritePost *.rst silent call RestW3mReload()
+" ----------
+" syntastics
+" ----------
+let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_jshint_conf = $HOME . '/.eslintrc.json'
 
 " --------------
 " rainbowcyclone
 " --------------
-
 nnoremap ,/ :RC!/
-
-" -------------
-" Unite outline
-" -------------
-"let g:unite_split_rule = 'botleft'
-"noremap ,u <ESC>:Unite -vertical -winwidth=40 outline<Return>
-
-" --------
-" jedi.vim
-" --------
-" not set vim options
-let g:jedi#auto_vim_configuration = 0
-" Jedi selects the first line of the completion menu
-let g:jedi#popup_select_first = 0
-" rename_command is same quickrun
-let g:jedi#rename_command = '<Leader>R'
-let g:jedi#auto_initialization = 1
-let g:jedi#popup_on_dot = 0
-autocmd  FileType python let b:did_ftplugin = 1
 
 " --------
 " anzu.vim
@@ -339,14 +235,7 @@ let g:airline_section_c = '%F %{anzu#search_status()}'
 " disable whitespace
 let g:airline#extensions#whitespace#enabled = 0
 
-" ------
-" previm
-" ------
-let g:previm_open_cmd = 'open -a Firefox'
-augroup PrevimSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
-
-autocmd Filetype json setl conceallevel=0
-let g:vim_json_syntax_conceal = 0
+" -------
+" vim-jsx
+" -------
+let g:jsx_ext_required = 0

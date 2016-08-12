@@ -60,10 +60,7 @@ command! ColorList so $VIMRUNTIME/syntax/colortest.vim
 "no beep
 set vb t_vb=
 "ClipBoard
-"set clipboard&
-"set clipboard+=unnamed
-"set clipboard+=autoselect
-"set clipboard=unnamed
+set clipboard=unnamed,autoselect
 " search setting
 set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
@@ -182,8 +179,6 @@ function! s:python_setting()
 	"close index
 	setl foldmethod=indent
 	setl foldlevel=99
-	" pyflakes
-	"let pyflakes_use_quickfix=0
 endfunction
 
 "
@@ -198,8 +193,8 @@ function! s:fortran_setting()
 endfunction
 
 
-au FileType html setl sw=4 sts=4 et
-au FileType htmldjango setl sw=4 sts=4 et
+au FileType html setl sw=4 sts=4 ts=4 et
+au FileType htmldjango setl sw=4 sts=4 ts=4 et
 au FileType cpp setl tabstop=2 shiftwidth=2 sts=0 et
 au FileType javascript setl tabstop=2 shiftwidth=2 sts=0 et
 
