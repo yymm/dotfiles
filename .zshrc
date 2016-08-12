@@ -84,3 +84,6 @@ setopt list_packed
 # Environment Settings
 # ====================
 source $HOME/.zshrc.env
+
+export NVM_DIR="/home/yano/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
