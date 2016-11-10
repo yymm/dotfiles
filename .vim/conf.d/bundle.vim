@@ -2,18 +2,17 @@
 "neobundle
 "---------
 
-if !1 | finish | endif
+if 0 | endif
 
 if has('vim_starting')
-  " Required:
+  if &compatible
+    set nocompatible
+  endif
+
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-" Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
 
 NeoBundle 'Shougo/neocomplete.git'
 NeoBundle 'Shougo/unite.vim.git'
@@ -37,6 +36,7 @@ NeoBundle 'LeafCage/yankround.vim.git'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'wting/rust.vim'
+NeoBundle 'fatih/vim-go'
 NeoBundle 'mtscout6/vim-cjsx'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'mxw/vim-jsx'

@@ -104,59 +104,34 @@ nnoremap <silent> fy :<C-u>Unite history/yank<CR>
 "vimfiler
 "--------
 
+call vimfiler#custom#profile('default', 'context', {
+      \ 'safe' : 0,
+      \ 'auto_expand' : 1,
+      \ 'parent' : 0,
+      \ })
 "default explore -> vimfiler
 let g:vimfiler_as_default_explorer = 1
-"invalid safe mode
-let g:vimfiler_safe_mode_by_default = 0
 "buffer directory
 nnoremap <silent> fe :<C-u>VimFilerBufferDir -quit<CR>
 "IDE like
-nnoremap <silent> fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
- 
+nnoremap <silent> fi :<C-u>VimFilerBufferDir -split -simple -winwidth=100 -no-quit<CR>
+" Nerdtree like
+nnoremap <C-e> :VimFiler -buffer-name=explorer -split -winwidth=100 -toggle -no-quit<Cr>
 "key mapping
 augroup vimrc
 	autocmd FileType vimfiler call s:vimfiler_my_settings()
 augroup END
 function! s:vimfiler_my_settings()
-	nmap <buffer> q <Plug>(vimfiler_exit)
-	nmap <buffer> Q <Plug>(vimfiler_hide)
+	nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('vsplit')
+	nnoremap <silent><buffer><expr> v vimfiler#do_switch_action('split')
+	nnoremap <silent><buffer><expr> t vimfiler#do_action('tabopen')
 endfunction
-
-"--------------------------------------------------------
-" vimfiler setting like nerdtree but not setting for menu
-" http://hrsh7th.hatenablog.com/entry/20120229/1330525683
-" -------------------------------------------------------
-
-"autocmd VimEnter * VimFiler -buffer-name=explorer -split -winwidth=20 -toggle -no-quit
-nnoremap <C-e> :VimFiler -buffer-name=explorer -split -winwidth=80 -toggle -no-quit<Cr>
-autocmd! FileType vimfiler call s:my_vimfiler_settings()
-function! s:my_vimfiler_settings()
-  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vimfiler_split')<Cr>
-  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_vimfiler_vsplit')<Cr>
-  nnoremap <buffer>t          :call vimfiler#mappings#do_action('my_vimfiler_tabnew')<Cr>
-endfunction
-
-let s:my_vimfiler_action = { 'is_selectable' : 1 }
-function! s:my_vimfiler_action.func(candidates)
-  wincmd p
-  exec 'split '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_vimfiler_split', s:my_vimfiler_action)
-
-let s:my_vimfiler_action = { 'is_selectable' : 1 }                     
-function! s:my_vimfiler_action.func(candidates)
-  wincmd p
-  exec 'vsplit '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_vimfiler_vsplit', s:my_vimfiler_action)
-
-let s:my_vimfiler_action = { 'is_selectable' : 1 }                     
-function! s:my_vimfiler_action.func(candidates)
-  wincmd p
-  exec 'tabnew '. a:candidates[0].action__path
-endfunction
-call unite#custom_action('file', 'my_vimfiler_tabnew', s:my_vimfiler_action)
+" Textmate icons
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
 
 "--------
 "vimshell
