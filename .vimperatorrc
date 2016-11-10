@@ -27,8 +27,8 @@ noremap <silent> tn :<C-u>tabnew<CR>
 map ,b :bmarks!
 
 " gt gT -> J/K
-noremap H gT
-noremap L gt
+noremap K gT
+noremap J gt
 
 "hint -> alphabet
 set hintchars=asdfghjklzxcvbnm
@@ -39,7 +39,7 @@ set hintchars=asdfghjklzxcvbnm
 
 " d -> Nop
 noremap x d
-noremap d <Nop>
+noremap d <Nop> 
 " gh -> Nop
 noremap gh <Nop>
 
@@ -63,74 +63,47 @@ mappings.add([modes.NORMAL], [",tw"],
         function () { commandline.open("", "memo => [" + buffer.title + "](" + buffer.URL + ")", modes.EX); });
 EOM
 
-set gui=none,tabs
-autocmd Fullscreen .* js myObj.toggleBottombar('fullscreen')
-
 "javascript to hide statusbar
-noremap <silent> <F8> :js myObj.toggleBottombar('toggle')<CR>
-noremap <silent> <F2> :js myObj.toggleNavbar()<CR>
-noremap : :js myObj.toggleBottombar('neutral')<CR>:
-noremap o :js myObj.toggleBottombar('neutral')<CR>o
-noremap O :js myObj.toggleBottombar('neutral')<CR>O
-noremap t :js myObj.toggleBottombar('neutral')<CR>t
-noremap T :js myObj.toggleBottombar('neutral')<CR>t
-noremap / :js myObj.toggleBottombar('neutral')<CR>/
-noremap ? :js myObj.toggleBottombar('neutral')<CR>?
-cnoremap <CR> <CR>:js myObj.toggleBottombar('neutral')<CR>
-cnoremap <Esc> <Esc>:js myObj.toggleBottombar('neutral')<CR>
+noremap <silent> <F8> :js toggle_bottombar()<CR>
+noremap : :js toggle_bottombar('on')<CR>:
+noremap o :js toggle_bottombar('on')<CR>o
+noremap O :js toggle_bottombar('on')<CR>O
+noremap t :js toggle_bottombar('on')<CR>t
+noremap T :js toggle_bottombar('on')<CR>t
+noremap / :js toggle_bottombar('on')<CR>/
+cnoremap <CR> <CR>:js toggle_bottombar('off')<CR>
+cnoremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
 
-js << EOF
-var myObj = {
-    contentSeperatorCss : highlight.get('ContentSeparator').value,
-    isFullscreen : false,
-    isStatuslineOn : true,
-    bottombar : document.getElementById('liberator-bottombar'),
-    navbar : document.getElementById('nav-bar'),
-    toggleBottombar : function(p) {
-        if (!this.bottombar) return;
-        if (p == 'on'){
-            if (!this.isStatuslineOn) {
-                this.isStatuslineOn = true;
-                this.bottombar.style.height = '';
-                this.bottombar.style.overflow = '';
-                highlight.set('ContentSeparator', this.contentSeperatorCss);
-            }
-            return;
-        }
-        if (p == 'off'){
-            if (this.isStatuslineOn) {
-                this.isStatuslineOn = false;
-                this.bottombar.style.height = '0px';
-                this.bottombar.style.overflow = 'hidden';
-                highlight.set('ContentSeparator', 'display: none;');
-            }
-            return;
-        }
-        if (p == 'neutral') {
-            if (!this.isStatuslineOn) this.toggleBottombar();
-            return;
-        }
-        if (p == 'fullscreen') {
-            this.isFullscreen = !this.isFullscreen;
-            if (this.isFullscreen) return this.toggleBottombar('off');
-            else return this.toggleBottombar('on');
-        }
-        if (p == 'toggle') {
-            this.isStatuslineOn = !this.isStatuslineOn;
-        }
-        if (this.bottombar.style.height != '') {
-            this.bottombar.style.height = '';
-            this.bottombar.style.overflow = '';
-            highlight.set('ContentSeparator', this.contentSeperatorCss);
-        } else {
-            this.bottombar.style.height = '0px';
-            this.bottombar.style.overflow = 'hidden';
-            highlight.set('ContentSeparator', 'display: none;');
-        }
-    },
-    toggleNavbar : function() {
-        if (!this.navbar) return;
-        this.navbar.collapsed = !this.navbar.getAttribute('collapsed');
+:js << EOF
+var hl = highlight.get('ContentSeparator');
+var cs_current = hl.value;
+
+function toggle_bottombar(p) {
+    var bb = document.getElementById('liberator-bottombar');
+    if (!bb)
+        return;
+    if (p == 'on'){
+        show_bottombar(bb);
+        return;
     }
-};
+    if (p == 'off'){
+        hide_bottombar(bb)
+        return;
+    }
+    bb.style.height == '' ? hide_bottombar(bb) : show_bottombar(bb);
+}
+
+function show_bottombar(bb) {
+    bb.style.height = '';
+    bb.style.overflow = '';
+    liberator.execute('highlight ContentSeparator ' + cs_current);
+}
+
+function hide_bottombar(bb) {
+    bb.style.height = '0px';
+    bb.style.overflow = 'hidden';
+    liberator.execute('highlight ContentSeparator display: none;');
+}
+
+toggle_bottombar();
 EOF

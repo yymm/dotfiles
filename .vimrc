@@ -16,6 +16,7 @@ set ruler
 set showcmd
 "bracket match high lighting
 set noshowmatch
+set matchtime=1
 "always status line
 set laststatus=2
 "ok backspace
@@ -59,10 +60,7 @@ command! ColorList so $VIMRUNTIME/syntax/colortest.vim
 "no beep
 set vb t_vb=
 "ClipBoard
-"set clipboard&
-"set clipboard+=unnamed
-"set clipboard+=autoselect
-"set clipboard=unnamed
+set clipboard=unnamed,autoselect
 " search setting
 set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
@@ -150,6 +148,13 @@ set encoding=utf-8
 "set fileencodings=iso-2022-jp,euc-jp,sjis,utf8
 set fileencodings=utf-8,euc-jp,ucs-bom,iso-2022-jp,sjis,cp932,latin
 
+" In/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Y => y$
+nnoremap Y y$
+
 "
 " for Python
 "
@@ -174,8 +179,6 @@ function! s:python_setting()
 	"close index
 	setl foldmethod=indent
 	setl foldlevel=99
-	" pyflakes
-	"let pyflakes_use_quickfix=0
 endfunction
 
 "
@@ -189,6 +192,13 @@ function! s:fortran_setting()
 	setl colorcolumn=6
 endfunction
 
+
+au FileType html setl sw=4 sts=4 ts=4 et
+au FileType htmldjango setl sw=4 sts=4 ts=4 et
+au FileType cpp setl tabstop=2 shiftwidth=2 sts=0 et
+au FileType javascript setl tabstop=2 shiftwidth=2 sts=0 et
+au FileType javascript.jsx setl tabstop=2 shiftwidth=2 sts=0 et
+
 "
 " golang
 "
@@ -200,8 +210,7 @@ set rtp+=$GOROOT/misc/vim
 " vimにcoffeeファイルタイプを認識させる
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " " インデントを設定
-autocmd FileType coffee setlocal sw=4 sts=4 ts=4 et
-autocmd filetype javascript setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
+autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et
 
 "
 " Plugins

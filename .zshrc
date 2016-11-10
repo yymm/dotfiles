@@ -71,7 +71,7 @@ fi
 # Alias
 alias ls='ls -G'
 # PATH
-PATH=$PATH:~/.bin
+PATH=/Users/yano/.pyenv/shims:$PATH:~/.bin
 # no beep
 setopt nolistbeep
 # useful functions
@@ -84,6 +84,3 @@ setopt list_packed
 # Environment Settings
 # ====================
 source $HOME/.zshrc.env
-
-export NVM_DIR="/home/yano/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -1,4 +1,4 @@
-DOT_FILES=( .zshrc .zshrc.env .gitconfig .screenrc .vimrc .vim .tmux.conf .tmux-powerline .hgrc)
+DOT_FILES=( .zshrc .zshrc.env .gitconfig .screenrc .vimrc .vim .tmux.conf .tmux-powerline .hgrc )
 
 for file in ${DOT_FILES[@]}
 do
@@ -6,7 +6,7 @@ do
 done
 
 # Neobundle
-[ ! -d ~/.vim/bundle ] && mkdir -p ~/.vim/bundle && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim && echo "you should run following command to setup plugins -> vim -c ':NeoBundleInstall'"
+[ ! -d ~/.vim/bundle ] && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 [ ! -d ~/.vim/bundle/vimproc.vim ] && git clone git@github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
 
 case "${OSTYPE}" in
@@ -19,6 +19,8 @@ linux*)
     cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
     ;;  
 esac
+
+vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
 
 function askYesOrNo {
   MSG=$1
@@ -33,8 +35,8 @@ function askYesOrNo {
   done
 }
 
-askYesOrNo ">>> GUI?"
-if [ $? -eq 0 ]; then
-	ln -s -i $HOME/dotfiles/.vimperatorrc $HOME/.vimperatorrc
-	ln -s -i $HOME/dotfiles/.vimperator $HOME/.vimperator
-fi
+#askYesOrNo ">>> GUI?"
+#if [ $? -eq 0 ]; then
+#	ln -s -i $HOME/dotfiles/.vimperatorrc $HOME/.vimperatorrc
+#	ln -s -i $HOME/dotfiles/.vimperator $HOME/.vimperator
+#fi
