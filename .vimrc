@@ -197,6 +197,7 @@ au FileType html setl sw=4 sts=4 ts=4 et
 au FileType htmldjango setl sw=4 sts=4 ts=4 et
 au FileType cpp setl tabstop=2 shiftwidth=2 sts=0 et
 au FileType javascript setl tabstop=2 shiftwidth=2 sts=0 et
+au FileType javascript.jsx setl tabstop=2 shiftwidth=2 sts=0 et
 
 "
 " golang
