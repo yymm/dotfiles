@@ -1,6 +1,8 @@
 [user]
 email = yuya.yano.6260@gmail.com
 name = yuya yano
+[core]
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim
 [color]
 # colorの設定(以下のコマンドは自動で色つける)
 status = auto
