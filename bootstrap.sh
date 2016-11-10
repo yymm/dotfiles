@@ -2,7 +2,7 @@ DOT_FILES=( .zshrc .zshrc.env .gitconfig .screenrc .vimrc .vim .tmux.conf .tmux-
 
 for file in ${DOT_FILES[@]}
 do
-	ln -s -i $HOME/dotfiles/$file $HOME/$file
+	ln -s -i $HOME/.dotfiles/$file $HOME/$file
 done
 
 # Neobundle
@@ -37,6 +37,6 @@ function askYesOrNo {
 
 #askYesOrNo ">>> GUI?"
 #if [ $? -eq 0 ]; then
-#	ln -s -i $HOME/dotfiles/.vimperatorrc $HOME/.vimperatorrc
-#	ln -s -i $HOME/dotfiles/.vimperator $HOME/.vimperator
+#	ln -s -i $HOME/.dotfiles/.vimperatorrc $HOME/.vimperatorrc
+#	ln -s -i $HOME/.dotfiles/.vimperator $HOME/.vimperator
 #fi
